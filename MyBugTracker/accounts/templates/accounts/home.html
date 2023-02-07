@@ -3,7 +3,6 @@
 {% block content %}
 
 <h1>Dashboard</h1 >
-
 <div class="row">
     <div class="col-md-5">
         <hr>
@@ -15,10 +14,20 @@
                         <th>ID</th>
                         <th>Status</th>
                         <th>Priority</th>
-                        <th style="width:80%">  Description</th>
                         <th >Points</th>
                         <th style="white-space: nowrap;">Assigned to</th>
+                        <th>Edit</th>
                     </tr>
+                    {% for ticket in tickets %}
+                        <tr>
+                            <td>{{ticket.TicketId}}</td>
+                            <td>{{ticket.TicketStatus}}</td>
+                            <td>{{ticket.TicketPriority}}</td>
+                            <td>{{ticket.TicketPoints}}</td>
+                            <td>{{ticket.TicketAssignedTo}}</td>
+                            <td><a class = "btn btn-sm btn-info " href="">Details</a></td>
+                        </tr>
+                        {% endfor %}
                 </table>
             </div>
         </div>
@@ -31,9 +40,14 @@
                 <table class="table table-light">
                     <tr>
                         <th>Project ID</th>
-                        <th>Project Description</th>
-                        <th>Contributers</th>    
+                        <th>Project Name</th>
+                        <th>Edit</th>     
                     </tr>
+                {%for project in projects%}
+                    <td>{project.ProjectId}</td>
+                    <td>{project.ProjectName}</td>
+                    <td><a class = "btn btn-sm btn-info " href="">Details</a></td>
+                {% endfor %}
                 </table>
             </div>
         </div>
