@@ -12,12 +12,22 @@
                     <tr>
                         <th>Ticket ID</th>
                         <th>Ticket Description</th>
+                        <th>Ticket status</th>
+                        <th>Ticket priority</th>
+                        <th>Ticket points</th>
+                        <th>Project</th>
+                        <th>Submitted by</th>
                         <th>Assigned To</th>
                     </tr>
                     {% for ticket in user_tickets %}
                         <tr>
                             <td>{{ ticket.TicketId}}</td>
                             <td>{{ ticket.TicketDescription }}</td>
+                            <td>{{ ticket.TicketStatus }}</td>
+                            <td>{{ ticket.TicketPriority }}</td>
+                            <td>{{ ticket.TicketPoints }}</td>
+                            <td>{{ ticket.TicketProject }}</td>
+                            <td>{{ ticket.TicketSubmittedBy }}</td>
                             <td>h</td>
                         </tr>
                         {% endfor %}
