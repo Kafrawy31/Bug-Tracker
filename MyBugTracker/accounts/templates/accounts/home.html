@@ -16,6 +16,7 @@
                         <th>Priority</th>
                         <th >Points</th>
                         <th style="white-space: nowrap;">Assigned to</th>
+                        <th>Submitter</th>
                         <th>Edit</th>
                     </tr>
                     {% for ticket in tickets %}
@@ -25,6 +26,7 @@
                             <td>{{ticket.TicketPriority}}</td>
                             <td>{{ticket.TicketPoints}}</td>
                             <td>{{ticket.TicketAssignedTo}}</td>
+                            <td>{{ticket.TicketSubmittedBy}}</td>
                             <td><a class = "btn btn-sm btn-info " href="">Details</a></td>
                         </tr>
                         {% endfor %}
@@ -44,8 +46,8 @@
                         <th>Edit</th>     
                     </tr>
                 {%for project in projects%}
-                    <td>{project.ProjectId}</td>
-                    <td>{project.ProjectName}</td>
+                    <td>{{project.ProjectId}}</td>
+                    <td>{{project.ProjectName}}</td>
                     <td><a class = "btn btn-sm btn-info " href="">Details</a></td>
                 {% endfor %}
                 </table>

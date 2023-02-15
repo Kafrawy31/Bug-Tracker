@@ -4,4 +4,27 @@
 
 <h1>Account</h1>
 
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Ticket Description</th>
+                        <th>Assigned To</th>
+                    </tr>
+                    {% for ticket in user_tickets %}
+                        <tr>
+                            <td>{{ ticket.TicketId}}</td>
+                            <td>{{ ticket.TicketDescription }}</td>
+                            <td>h</td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

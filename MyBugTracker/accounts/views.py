@@ -26,8 +26,11 @@ def home(request):
 def login(request):
     return render(request, 'accounts/login.html')
 
-def user(request):
-    return render(request, 'accounts/user.html')
+def user(request, pk):
+    cuser = DevUser.objects.get(UserId=pk)
+    user_tickets = cuser.assignedto.all()
+    context = {'Duser': cuser, 'user_tickets':user_tickets}
+    return render(request, 'accounts/user.html',context)
 
 def tickets(request):
     return render(request, 'accounts/user.html')

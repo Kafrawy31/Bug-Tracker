@@ -18,13 +18,14 @@ class DevUser(models.Model):
     class UserRoles(models.TextChoices):
         Developer = 'DEV', "Developer"
         Senior = 'SEN', "Senior"
+        Admin = 'ADM', "Admin"
     UserId = models.AutoField(primary_key=True)
     UserName = models.CharField(max_length=26)
     UserEmail = models.EmailField(max_length=60)
     UserPassword = models.CharField(max_length=16)
     UserPoints = models.IntegerField(default=0)
     UserRole = models.TextField(max_length=12, choices=UserRoles.choices, null=True)
-    UserProject = models.ManyToManyField(Project)
+    UserProject = models.ManyToManyField(Project, blank=True)
     
     
     def __str__(self):
@@ -51,7 +52,9 @@ class Ticket(models.Model):
         
     ])
     TicketProject = models.ForeignKey(Project, on_delete=models.CASCADE)
-    TicketAssignedTo = models.ForeignKey(DevUser, on_delete=models.DO_NOTHING, default=None, null=True, blank=True)
+    ticketassignedto = models.ForeignKey(DevUser, on_delete=models.DO_NOTHING, related_name="assignedto", default=None, null=True, blank=True)
+    TicketSubmittedBy = models.ForeignKey(DevUser, on_delete=models.DO_NOTHING, related_name="Ticket_submitted_by", default=None)
+
     
     def __str__(self):
         return 'Ticket ' + str(self.TicketId)
