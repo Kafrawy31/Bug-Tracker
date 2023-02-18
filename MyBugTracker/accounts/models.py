@@ -16,9 +16,9 @@ class Project(models.Model):
 
 class DevUser(models.Model):
     class UserRoles(models.TextChoices):
-        Developer = 'DEV', "Developer"
-        Senior = 'SEN', "Senior"
-        Admin = 'ADM', "Admin"
+        Developer = 'Developer', "DEV"
+        Senior = 'Senior', "SEN"
+        Admin = 'Admin', "ADM"
     UserId = models.AutoField(primary_key=True)
     UserName = models.CharField(max_length=26)
     UserEmail = models.EmailField(max_length=60)
@@ -51,7 +51,7 @@ class Ticket(models.Model):
                                                    MinValueValidator(1)
         
     ])
-    TicketProject = models.ForeignKey(Project, on_delete=models.CASCADE)
+    TicketProject = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tproject")
     ticketassignedto = models.ForeignKey(DevUser, on_delete=models.DO_NOTHING, related_name="assignedto", default=None, null=True, blank=True)
     TicketSubmittedBy = models.ForeignKey(DevUser, on_delete=models.DO_NOTHING, related_name="Ticket_submitted_by", default=None)
 

@@ -1,40 +1,39 @@
-{% extends 'accounts/main.html' %}
+{% extends 'accounts/main.html' %} {% block content %}
 
-{% block content %}
-
-<h1>Account</h1>
+<h1 class="user-name">{{cuser.UserName}}</h1>
+<h4 class="User-role">{{cuser.UserRole}}</h4>
 
 <div class="row">
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-sm">
-                    <tr>
-                        <th>Ticket ID</th>
-                        <th>Ticket Description</th>
-                        <th>Ticket status</th>
-                        <th>Ticket priority</th>
-                        <th>Ticket points</th>
-                        <th>Project</th>
-                        <th>Submitted by</th>
-                        <th>Assigned To</th>
-                    </tr>
-                    {% for ticket in user_tickets %}
-                        <tr>
-                            <td>{{ ticket.TicketId}}</td>
-                            <td>{{ ticket.TicketDescription }}</td>
-                            <td>{{ ticket.TicketStatus }}</td>
-                            <td>{{ ticket.TicketPriority }}</td>
-                            <td>{{ ticket.TicketPoints }}</td>
-                            <td>{{ ticket.TicketProject }}</td>
-                            <td>{{ ticket.TicketSubmittedBy }}</td>
-                            <td>h</td>
-                        </tr>
-                        {% endfor %}
-                </table>
-            </div>
-        </div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-md">
+          <tr>
+            <th>Ticket ID</th>
+            <th>Ticket Description</th>
+            <th>Ticket status</th>
+            <th>Ticket priority</th>
+            <th>Ticket points</th>
+            <th>Project</th>
+            <th>Submitted by</th>
+            <th>Assigned To</th>
+          </tr>
+          {% for ticket in user_tickets %}
+          <tr>
+            <td>{{ ticket.TicketId}}</td>
+            <td>{{ ticket.TicketDescription }}</td>
+            <td>{{ ticket.TicketStatus }}</td>
+            <td>{{ ticket.TicketPriority }}</td>
+            <td>{{ ticket.TicketPoints }}</td>
+            <td>{{ ticket.TicketProject }}</td>
+            <td>{{ ticket.TicketSubmittedBy }}</td>
+            <td>h</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
     </div>
+  </div>
 </div>
 
 {% endblock %}

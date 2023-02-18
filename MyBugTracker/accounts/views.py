@@ -29,12 +29,19 @@ def login(request):
 def user(request, pk):
     cuser = DevUser.objects.get(UserId=pk)
     user_tickets = cuser.assignedto.all()
-    context = {'Duser': cuser, 'user_tickets':user_tickets}
+    context = {'cuser': cuser, 'user_tickets':user_tickets}
     return render(request, 'accounts/user.html',context)
 
-def tickets(request):
-    return render(request, 'accounts/user.html')
+def tickets(request,ptk):
+    cticket = Ticket.objects.get(TicketId=ptk)
+    context = {'cticket': cticket}
+    return render(request, 'accounts/tickets.html',context)
 
+def projects(request,ppk):
+    cproject = Ticket.objects.get(TicketId=ppk)
+    project_tickets = cproject.tproject.all()
+    context = {'cproject': cproject, 'project_tickets': project_tickets}
+    return render(request, 'accounts/projects.html',context)
 
 
 
